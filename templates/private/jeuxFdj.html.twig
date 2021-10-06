@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous">
+    </script>
+    <link href="{{ asset('css/base.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('css/template.css') }}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+    <title>{% block title %}{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<div id="global-wrapper">
+    <header>
+
+    </header>
+    <nav id="general-nav">
+        <a href="{{ path('logged_home') }}">Home</a>
+        <a href="{{ path('app_logout') }}">Déconnexion</a>
+        <a href="#">Profil</a>
+        <a href="#">Paris</a>
+        <a href="{{ path('private_game') }}">Jeux fdj</a>
+    </nav>
+
+    <main>
+        <h1>Jeux FDJ</h1>
+        <nav>
+            <a href="#">Page loto</a>
+            <a href="{{ path('euromillions_home_all') }}">Page Euromillion</a>
+        </nav>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>Toto-tipster 2020 tous droit réservés.</p>
+    </footer>
+    {% block javascripts %}{% endblock %}
+</div>
+</body>
+</html>

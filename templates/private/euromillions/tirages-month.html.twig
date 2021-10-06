@@ -1,0 +1,62 @@
+{% extends 'private/jeuxFdj.html.twig' %}
+{% set currentY = data['currentYear'] is defined ? data['currentYear'] : 'ALL' %}
+{% set currentM = data['currentMonthInLetter'] is defined ? data['currentMonthInLetter'] : 'ALL' %}
+{% set occs = data['stats'].occurence %}
+{% block content %}
+    <h2>Euromillions - Tirages & Stats</h2>
+    <div id="choose-period">
+        <h3>Choisissez une période</h3>
+        <div>
+            {% if currentY == 'ALL' %}
+                <a class="current" href="{{ path('euromillions_home_all') }}">ALL</a>
+            {% else %}
+                <a href="{{ path('euromillions_home_all') }}">ALL</a>
+            {% endif %}
+            {% for year in data['firstYear']..data['lastYear'] %}
+                {% if currentY == year %}
+                    <a class="current" href="{{ path('euromillions_year', {'year': year}) }}">{{ year }}</a>
+                {% else %}
+                    <a href="{{ path('euromillions_year', {'year': year}) }}">{{ year }}</a>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+    <div id="choose-period">
+        <h3>Choisissez une sous période</h3>
+        <div>
+            {% if currentM == 'ALL' %}
+                <a  class="current" href="{{ path('euromillions_year', {'year': data['currentYear']}) }}">ALL</a>
+            {% else %}
+                <a href="{{ path('euromillions_year', {'year': data['currentYear']}) }}">ALL</a>
+            {% endif %}
+            {% for array in data['arrayMonth'] %}
+                {% for stringMonth, intMonth in array %}
+                    {% if currentM == stringMonth %}
+                        <a class="current" href="{{ path('euromillions_month', {'year': data['currentYear'], 'month': intMonth}) }}">{{ stringMonth|capitalize }}</a>
+                    {% else %}
+                        <a href="{{ path('euromillions_month', {'year': data['currentYear'], 'month': intMonth}) }}">{{ stringMonth|capitalize }}</a>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+
+        </div>
+    </div>
+    <div class="selected-period">
+        <p>Période Selectionés :<br/>
+        <ul>
+            <li>Année : <strong>{{ currentY }}</strong></li>
+            <li>Mois : <strong>{{ currentM|capitalize }}</strong></li>
+        </ul>
+        </p>
+    </div>
+
+    <div id="wrapper-tirage">
+        {% include 'private/euromillions/include/tirages.html.twig' %}
+    </div>
+    <div id="wrapper-stats">
+        <h3>Statistique Euromillion sur la période</h3>
+        <p>Nombre de tirages pour cette période :{{ data['stats'].nbTirages }} tirages</p>
+        {% include 'private/euromillions/include/stats.html.twig' %}
+    </div>
+{% endblock %}

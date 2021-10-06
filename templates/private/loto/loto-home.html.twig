@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <h1>Loto</h1>
+    <div class="link-container">
+        <a href="{{ path('loto-year-tirage', {'year': 2008}) }}">Tirages 2008</a>
+        <a href="{{ path('loto-year-tirage', {'year': 2009}) }}">Tirages 2009</a>
+        <a href="{{ path('loto-year-tirage', {'year': 2010}) }}">Tirages 2010</a>
+        <a href="{{ path('loto-year-tirage', {'year': 2011}) }}">Tirages 2011</a>
+        <a href="{{ path('loto-year-tirage', {'year': 2012}) }}">Tirages 2012</a>
+        <a href="{{ path('loto-year-tirage', {'year': 2013}) }}">Tirages 2013</a>
+        <a href="{{ path('loto-year-tirage', {'year': 2014}) }}">Tirages 2014</a>
+        <a href="{{ path('loto-year-tirage', {'year': 2015}) }}">Tirages 2015</a>
+        <a href="{{ path('loto-year-tirage', {'year': 2016}) }}">Tirages 2016</a>
+        <a href="{{ path('loto-year-tirage', {'year': 2017}) }}">Tirages 2017</a>
+        <a href="{{ path('loto-year-tirage', {'year': 2018}) }}">Tirages 2018</a>
+        <a href="{{ path('loto-year-tirage', {'year': 2019}) }}">Tirages 2019</a>
+        <a href="{{ path('loto-year-tirage', {'year': 2020}) }}">Tirages 2020</a>
+    </div>
+    <div>
+        {% block lotoContent %}
+
+        {% endblock %}
+    </div>
+{% endblock %}

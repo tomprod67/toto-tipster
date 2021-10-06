@@ -1,0 +1,37 @@
+{% extends 'public/loto/loto-home.html.twig' %}
+{% block lotoContent %}
+<div class="count">
+    Il y a {{ tirages.getTotalItemCount }} tirages pour l'année {{ year }}
+</div>
+<div class="navigation">
+    {{ knp_pagination_render(tirages) }}
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Numeros</th>
+            <th>Numero Complémentaire</th>
+        </tr>
+        {% for tirage in tirages %}
+            <tr>
+                <td>{{ tirage.date|date('d/m/Y') }}</td>
+                <td>
+                    <span class="number">{{ tirage.num1 }}</span>
+                    <span class="number">{{ tirage.num2 }}</span>
+                    <span class="number">{{ tirage.num3 }}</span>
+                    <span class="number">{{ tirage.num4 }}</span>
+                    <span class="number">{{ tirage.num5 }}</span>
+                </td>
+                <td>
+                    <span class="numC">{{ tirage.numC }}</span>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(tirages) }}
+    </div>
+</div>
+{% endblock %}

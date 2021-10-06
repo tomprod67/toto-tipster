@@ -1,0 +1,9 @@
+{% extends 'public/base.html.twig' %}
+
+{% block content %}
+    {% for message in app.flashes('test') %}
+    <p>{{ message }}</p>
+    {% endfor %}
+    <h1>{% trans %}I love water{% endtrans %}</h1>
+
+{% endblock %}

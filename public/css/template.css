@@ -1,0 +1,139 @@
+/* euromillion home - tirage-tab */
+.table-container{
+    border: 2px green solid;
+    display: flex;
+    flex-direction: column;
+}
+table{
+    border: 3px violet solid;
+    border-collapse: collapse;
+    margin: auto;
+}
+.navigation{
+    padding: 1em;
+    margin: auto;
+}
+table td{
+    padding:0 1em 0 1em;
+    border-bottom: 1px solid black;
+}
+thead{
+    font-weight: 500;
+    border-bottom: 1px solid black;
+}
+.date-tirage{
+    font-weight: bold;
+}
+
+.wrapper-tirage{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper-all-number{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper-all-specials{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.3em 0.2em 0.3em;
+}
+.tirage-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.container-number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #00329b;
+    background-color: #001367;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    margin: 0.5em 0.3em;
+}
+.number{
+    font-weight: 400;
+    color: #FFFFFF;
+    text-align: center;
+}
+.container-number-special{
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'><path fill='%23eebb05' d='M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z'/></svg>") 0/2.7rem 2.7rem;
+    color: white;
+    font-weight: 400;
+    text-align: center;
+    width: 2.7rem;
+    height: 2.7rem;
+    line-height: 2.9rem;
+    margin-left: 0.3em;
+}
+
+.special-num{
+    top : 2em;
+}
+#choose-period{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#choose-period div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#choose-period a{
+    padding: 0.5em 1em;
+    margin: 1em;
+    text-decoration: none;
+    background-color: #AAAAAA;
+    border-radius: 1em;
+    color: black;
+}
+
+/* euromillion home - stats */
+
+.cat-stats{
+    border: 1px solid green;
+    width: 50%;
+    padding: 1em;
+    text-align: center;
+}
+.cat-stats:nth-child(3), .cat-stats:nth-child(6){
+    width: 100%;
+}
+.cat-stats:nth-child(6) .container-stats-in-cat{
+    max-height: 10em;
+}
+.container-stats{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.container-stats-in-cat{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 70em;
+    justify-content: center;
+    align-items: center;
+}
+.container-one-tirage-occ{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.container-all-numbers-special, .container-all-numbers, .container-number-occ{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

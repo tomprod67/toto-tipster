@@ -1,0 +1,54 @@
+<h3>Tirage(s) Euromillions</h3>
+<div class="table-container">
+    <table>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Tirage</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tirage in data['tirages'] %}
+            <tr>
+                <td class="td-date">
+                    <span class="date-tirage">{{ tirage.date|date('d/m/Y') }}</span>
+                </td>
+                <td class="td-tirage">
+                    <div class="wrapper-tirage">
+                        <div class="wrapper-all-number">
+                            <div class="container-number">
+                                <span class="number">{{ tirage.num1 }}</span>
+                            </div>
+                            <div class="container-number">
+                                <span class="number">{{ tirage.num2 }}</span>
+                            </div>
+                            <div class="container-number">
+
+                                <span class="number">{{ tirage.num3 }}</span>
+                            </div>
+                            <div class="container-number">
+
+                                <span class="number">{{ tirage.num4 }}</span>
+                            </div>
+                            <div class="container-number">
+                                <span class="number">{{ tirage.num5 }}</span>
+                            </div>
+                        </div>
+                        <div class="wrapper-all-specials">
+                            <div class="container-number-special">
+                                <span class="special-num">{{ tirage.numC1 }}</span>
+                            </div>
+                            <div class="container-number-special">
+                                <span class="special-num">{{ tirage.numC2 }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(data['tirages']) }}
+    </div>
+</div>

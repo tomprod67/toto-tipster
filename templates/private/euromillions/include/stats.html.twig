@@ -1,0 +1,84 @@
+<div class="container-stats">
+    {% set emptyMessage = "Aucun tirage n'apparait plusieurs fois dans la période" %}
+    {% for name, array in occs %}
+        {% if name == 'fullTirage' %}
+            {% set catTitle = "Tirages complets (tous les numéros)" %}
+            {% set catDescription = "La liste des tirages 'complets' qui apparaissent plusieurs fois au cours de la période" %}
+        {% elseif name == 'tirageSansNc' %}
+            {% set catTitle = "Tirages (sans les numéros complémentaires)" %}
+            {% set catDescription = "La liste des tirages (sans prendre en compte les numéros complémentaires) qui apparaissent fois au cours de la période" %}
+        {% elseif name == 'tirageNc' %}
+            {% set catTitle = "Tirages (juste les numéros complémentaires)" %}
+            {% set catDescription = "La liste des tirages (juste les numéros complémentaires) qui apparaissent fois au cours de la période" %}
+        {% elseif name == 'fullNumber' %}
+            {% set catTitle = "Numeros (tous les numeros des tirages)" %}
+            {% set catDescription = "La liste des numéros (tous les numéros des tirages) qui apparaissent au cours de la période" %}
+        {% elseif name == 'numberSansNc' %}
+            {% set catTitle = "Numeros (tous les numeros des tirages sauf les numéros complementaires)" %}
+            {% set catDescription = "La liste des numéros (les numéros des tirages sans prendre en compte les numéros complémentaires) qui apparaissent au cours de la période" %}
+        {% elseif name == 'numberNc' %}
+            {% set catTitle = "Numeros (tous les numéros complémentaires des tiragess)" %}
+            {% set catDescription = "La liste des numéros (juste les numéros complémentaires) qui apparaissent au cours de la période" %}
+        {% endif %}
+        <div class="cat-stats">
+            <h4>{{ catTitle }}</h4>
+            <p>{{ catDescription }}</p>
+            <div class="container-stats-in-cat">
+                {% if array['tirages'] is defined %}
+                    {% if array['tirages'] is empty %}
+                        <p class=empty-tirage'>{{ emptyMessage }}</p>
+                    {% else %}
+                        {% for element in array['tirages'] %}
+                            <div class="container-one-tirage-occ">
+                                <div class="container-one-tirage">
+                                    {% for key, value in element %}
+                                        {% if key == 'numbers' %}
+                                            <div class="container-all-numbers">
+                                                {% for number in value %}
+                                                    <div class="container-number">
+                                                        <span class="number">{{ number }}</span>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% elseif key == 'numbersC' %}
+                                            <div class="container-all-numbers-special">
+                                                {% for number in value %}
+                                                    <div class="container-number-special">
+                                                        <span class="number-special">{{ number }}</span>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <span class="occ"><strong>{{ element['occ'] }}</strong> fois</span>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% elseif array['numbers'] is defined %}
+                    {% for number, occu in array['numbers'] %}
+                        {% if name == 'numberNc' %}
+                            <div class="container-number-special-occ">
+                                <div class="container-number-special">
+                                    <span class="number-special">{{ number }}</span>
+                                </div>
+                                <div class="container-occ">
+                                    <span class="occ"><strong>{{ occu }}</strong> fois</span>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="container-number-occ">
+                                <div class="container-number">
+                                    <span class="number">{{ number }}</span>
+                                </div>
+                                <div class="container-occ">
+                                    <span class="occ"><strong>{{ occu }}</strong> fois</span>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
